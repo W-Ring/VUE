@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+</head>
+<!--v-for 指令可以绑定数组的数据来渲染一个项目列表：-->
+<!--可在控制台使用app.todos.push({text:‘HTML’})添加，pop弹出栈顶元素-->
+<body>
+<div id="app">
+   <ol>
+       <li v-for="todo in todos">{{todo.text}}</li>
+   </ol>
+</div>
+<script src="vue.js"></script>
+<script >
+    var app= new Vue({
+        el:'#app',
+        data:{
+            todos:[
+                {text:'js'},
+                {text:'vue'},
+                {text:'jquery'}
+            ]
+        }
+    })
+</script>
+</body>
+</html>

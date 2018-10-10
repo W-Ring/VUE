@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+</head>
+<body>
+<div id="app">
+    <p>origin message:{{message}}</p>
+    <p>changed message:{{reverseMessage}}</p>
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            message:'hello world'
+        },
+        computed:{
+            reverseMessage:function () {
+                return this.message.split('').reverse().join('')
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

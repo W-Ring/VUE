@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <ol>
+      <li v-for="todo in todos">
+          {{todo.text}}
+      </li>
+  </ol>
+</div>
+
+<div id="app1">
+    <p>{{message}}</p>
+    <button v-on:click="reverseHello">点我</button>
+</div>
+
+<div id="app2">
+    <p>{{message}}</p>
+    <input v-model="message">
+</div>
+
+<script src="vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            todos:[
+                {text:'学习JS'},
+                {text:'学习VUE'},
+                {text:'整个项目'}
+            ]
+        }
+    })
+
+    new Vue({
+        el:'#app1',
+        data:{
+            message:'hello,world!'
+        },
+        methods:{
+            reverseHello:function () {
+                this.message=this.message.split('').reverse().join('');
+
+            }
+        }
+    })
+
+    new Vue({
+        el:'#app2',
+        data:{
+            message:'hello,VUE'
+        }
+
+
+
+
+
+    })
+</script>
+</body>
+</html>

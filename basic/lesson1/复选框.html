@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复选框</title>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+</div>
+
+<!--值绑定，选中时yes，没选是no-->
+<!--    true-value     false-value      -->
+<div id="app2">
+    <input type="checkbox" id="checkbox1" v-model="toggle" true-value="yes" false-value="no">
+    <label for="checkbox1">{{ toggle }}</label>
+</div>
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            checked:true
+        }
+    })
+
+    new Vue({
+        el:'#app2',
+        data:{
+            toggle:true
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择框</title>
+</head>
+<body>
+<!--选择一个-->
+<div id="app">
+    <select v-model="selected">
+        <option disabled value="">请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>selected:{{selected}}</span>
+</div>
+<!--按ctrl多选-->
+<div id="app2">
+    <select v-model="selected" multiple>
+        <option disabled value="">请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <br>
+    <span>selected：{{selected}}</span>
+</div>
+<!--v-for渲染动态选项-->
+<div id="app3">
+    <select v-model="selected">
+        <!--value的值会传到VUE实例中的selected-->
+        <option v-for="option in options"  v-bind:value="option.value">{{option.text}}</option>
+    </select>
+    <span>selected:{{selected}}</span>
+</div>
+
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            selected:''
+        }
+    })
+
+    new Vue({
+        el:'#app2',
+        data:{
+            selected:[]
+        }
+    })
+
+    new Vue({
+        el:'#app3',
+        data:{
+            selected:'A',
+            options:[
+                {text:'One',value:'AA'},
+                {text:'Two',value:'BB'},
+                {text:'Three',value:'CC'}
+            ]
+        }
+    })
+</script>
+</body>
+</html>

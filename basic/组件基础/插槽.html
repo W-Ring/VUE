@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插槽</title>
+</head>
+<body>
+<div id="app">
+    <alert-box>something bad happened.</alert-box>
+</div>
+<script src="../VUEdemo/vue.js"></script>
+<script>
+    Vue.component('alert-box',{
+        template:'<div>' +
+        '<strong>ERROR</strong>' +
+        '<slot></slot>' +
+        '</div>'
+    })
+
+    new Vue({
+        el:'#app'
+    })
+</script>
+</body>
+</html>

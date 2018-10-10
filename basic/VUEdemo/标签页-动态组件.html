@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态组件</title>
+    <style type="text/css">
+        .tab-button{
+            padding:60px 20px;
+            border-bottom-left-radius:3px;
+            border-top-right-radius: 3px;
+            border:1px solid #cccccc;
+            cursor:pointer;
+            background: #f0f0f0;
+            margin-bottom: -1px;
+            margin-right: -1px;
+        }
+        .tab-button:hover{
+            background: #e0e0e0;
+        }
+        .tab-button.active{
+            background: #5cb85c;
+        }
+        .tab{
+            border:1px solid #ccc;
+            padding: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="dynamic-component-demo" class="demo">
+    <button v-for="tab in tabs" v-bind:key="tab" v-bind:class="['tab-button',{active:currentTab===tab}]" v-on:click="currentTab=tab">
+    {{tab}}</button>
+     <!--component标签用于动态切换组件-->
+    <component v-bind:is="currentTabComponent" class="tab"></component>
+
+
+</div>
+<script src="vue.js"></script>
+<script>
+    Vue.component('tab-home',{
+        template:'<div>Home component</div>'
+    })
+    Vue.component('tab-posts',{
+        template:'<div>Posts component</div>'
+    })
+    Vue.component('tab-archive',{
+        template:'<div>Archive component</div>'
+    })
+    new Vue({
+        el:'#dynamic-component-demo',
+        data:{
+            currentTab:'Home',
+            tabs:['Home','Posts','Archive']
+        },
+        computed:{
+            currentTabComponent:function () {
+                return 'tab-'+this.currentTab.toLowerCase()
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
