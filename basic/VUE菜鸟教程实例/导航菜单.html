@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-Tips
+   event.prevent阻止事件默认方法，在a元素或者a元素的父元素中使用，可以阻止其发生跳转-->
+<head>
+    <meta charset="UTF-8">
+    <title>导航菜单</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        body{
+            font:15px/1.3 'Open Sans', sans-serif;
+            color: #5e5b64;
+            text-align:center;
+        }
+
+        a, a:visited {
+            outline:none;
+            color:#389dc1;
+        }
+
+        a:hover{
+            text-decoration:none;
+        }
+
+        section, footer, header, aside, nav{
+            display: block;
+        }
+
+        /*-------------------------
+            菜鸟
+        --------------------------*/
+
+        nav{
+            display:inline-block;
+            margin:60px auto 45px;
+            background-color:#5597b4;
+            box-shadow: 0 1px 1px #ccc;
+            border-radius:2px;
+        }
+
+        nav a{
+            display:inline-block;
+            padding: 18px 30px;
+            color:#fff !important;
+            font-weight:bold;
+            font-size:16px;
+            text-decoration:none !important;
+            line-height:1;
+            text-transform: uppercase;
+
+        }
+
+        nav a:hover{
+            background-color: #5cb85c;
+        }
+
+        p{
+            font-size:22px;
+            font-weight:bold;
+            color:#7d9098;
+        }
+
+        p b{
+            color:#ffffff;
+            display:inline-block;
+            padding:5px 10px;
+            background-color:#c4d7e0;
+            border-radius:2px;
+            text-transform:uppercase;
+            font-size:18px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--event.prevent方法，取消事件的默认动作。a标签href不加javascript:;也是不会刷新页面的。-->
+    <nav v-bind:class="active" >
+        <a href="#" class="home" v-on:click.prevent="tabChange('HOMe')">Home</a>
+        <a href="http://www.baidu.com" class="projects" v-on:click="tabChang('PROJECTs')">Projects</a>
+        <a href="http://www.baidu.com" class="service" v-on:click="tabChange('SERVICe')">Service</a>
+        <a href="#" class="content" v-on:click="tabChange('CONTACt')">Contact</a>
+    </nav>
+    <p>您选择了<b>{{currentContent}}菜单</b></p>
+
+
+</div>
+<script  src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            currentContent:'Home'
+        },
+        methods:{
+          tabChange:function (item) {
+              this.currentContent=item;
+          }
+        }
+
+    })
+</script>
+</body>
+</html>
